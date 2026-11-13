@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Carrinho - Mequi Experience</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <img
+                src="https://pngimg.com/uploads/mcdonalds/mcdonalds_PNG17.png"
+                class="logo"
+                alt="Logo do Mequi"
+            >
+            <h1>Mequi Experience</h1>
+        </div>
+
+        <a href="{{ url_for('inicio') }}" class="botao-voltar">
+            Voltar ao cardápio
+        </a>
+    </header>
+
+    <main class="pagina-carrinho">
+
+        <div class="titulo-pagina">
+            <h2>Meu carrinho</h2>
+            <p>Confira os produtos que você escolheu antes de finalizar.</p>
+        </div>
+
+        <div id="carrinho-itens">
+            <!-- O JavaScript insere os produtos aqui -->
+        </div>
+
+        <div class="resumo-carrinho">
+            <h3>Resumo do pedido</h3>
+
+            <p class="total-carrinho">
+                Total: <span id="carrinho-total">R$ 0,00</span>
+            </p>
+
+            <div class="acoes-carrinho">
+                <button id="limpar-carrinho" type="button">
+                    Limpar carrinho
+                </button>
+
+                <button id="finalizar-pedido" type="button">
+                    Finalizar pedido
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mequi Experience</title>
+
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rouge+Script&family=Yanone+Kaffeesatz:wght@200..700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="cabecalho" id="inicio">
+
+    <div class="logo-container">
+      <img
+        src="https://pngimg.com/uploads/mcdonalds/mcdonalds_PNG17.png"
+        class="logo"
+        alt="Logo do McDonald's"
+      >
+
+      <h1>Mequi Experience</h1>
+    </div>
+
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#promocoes">Promoções</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#sobre">Sobre nós</a>
+    </nav>
+
+    <a href="{{ url_for('carrinho') }}" class="botao-carrinho">
+      <img
+        src="{{ url_for('static', filename='imagens/carrinho.png') }}"
+        alt=""
+      >
+      <span>Carrinho</span>
+    </a>
+
+  </header>
+
+
+  <!-- BANNER PRINCIPAL -->
+  <section class="banner-principal" aria-label="Destaque principal">
+
+    <img
+      src="{{ url_for('static', filename='imagens/banner.png') }}"
+      alt="Destaque do Mequi Experience"
+    >
+
+    <a href="#cardapio" class="banner-botao">
+      Ver cardápio
+    </a>
+
+  </section>
+
+
+  <!-- PROMOÇÕES -->
+  <section class="promocoes" id="promocoes">
+
+    <h2>Ofertas que dão água na boca!</h2>
+
+    <p>Confira alguns dos destaques do nosso cardápio.</p>
+
+    <div class="promocoes-container">
+
+      <div class="promocao-item">
+        <img
+          src="{{ url_for('static', filename='imagens/original.png') }}"
+          alt="Big Mac"
+          loading="lazy"
+        >
+
+        <h3>Big Mac</h3>
+        <p>R$ 35,00</p>
+
+        <a href="#cardapio">Ver cardápio</a>
+      </div>
+
+      <div class="promocao-item">
+        <img
+          src="{{ url_for('static', filename='imagens/batatag.png') }}"
+          alt="Batata grande"
+          loading="lazy"
+        >
+
+        <h3>Batata grande</h3>
+        <p>R$ 15,00</p>
+
+        <a href="#cardapio">Ver cardápio</a>
+      </div>
+
+      <div class="promocao-item">
+        <img
+          src="{{ url_for('static', filename='imagens/mcfluryovo.png') }}"
+          alt="McFlurry de Ovomaltine"
+          loading="lazy"
+        >
+
+        <h3>McFlurry de Ovomaltine</h3>
+        <p>R$ 18,00</p>
+
+        <a href="#cardapio">Ver cardápio</a>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- CARDÁPIO -->
+    <section class="cardapio-abas-container" id="cardapio">
+
+      <h2>Nosso cardápio</h2>
+
+      <p>Encontre seus produtos favoritos!</p>
+
+      <!-- FILTROS -->
+      <input type="radio" id="aba-todos" name="categorias" checked>
+      <input type="radio" id="aba-hamburguer" name="categorias">
+      <input type="radio" id="aba-sorvete" name="categorias">
+      <input type="radio" id="aba-acompanhamento" name="categorias">
+
+      <div class="botoes-abas">
+
+        <label for="aba-todos">Todos</label>
+        <label for="aba-hamburguer">Hambúrgueres</label>
+        <label for="aba-sorvete">Sorvetes</label>
+        <label for="aba-acompanhamento">Acompanhamentos</label>
+
+      </div>
+
+
+      <!-- PRODUTOS -->
+      <div class="cardapio-container">
+
+        {% for produto in produtos %}
+
+        <div class="cardapio-item {{ produto['categoria'] }}">
+
+          <img
+            src="{{ url_for('static', filename='imagens/' + produto['imagem']) }}"
+            alt="{{ produto['nome'] }}"
+            loading="lazy"
+          >
+
+          <div class="descricao">
+
+            <h3>{{ produto['nome'] }}</h3>
+
+            <p class="preco-produto">
+              R$ {{ "%.2f"|format(produto['preco']) }}
+            </p>
+
+
+            <!-- ESCOLHA INDIVIDUAL OU COMBO -->
+            {% if produto['categoria'] == 'hamburguer' %}
+
+            <div class="opcoes-pedido">
+
+              <label for="tipo-{{ produto['id'] }}">
+                Como deseja pedir?
+              </label>
+
+              <select
+                class="tipo-pedido"
+                id="tipo-{{ produto['id'] }}"
+                data-id="{{ produto['id'] }}"
+              >
+                <option value="individual">Apenas hambúrguer</option>
+                <option value="combo">Transformar em combo</option>
+              </select>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- BOTÃO DE ADICIONAR -->
+            <button
+              type="button"
+              class="botao-adicionar"
+              data-id="{{ produto['id'] }}"
+              data-nome="{{ produto['nome'] }}"
+              data-preco="{{ produto['preco'] }}"
+              {% if produto['categoria'] == 'hamburguer' %}
+              data-preco-combo="{{ combos.get(produto['id'], produto['preco']) }}"
+              {% endif %}
+            >
+              Adicionar ao carrinho
+            </button>
+
+          </div>
+
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+    </section>
+
+
+    <!-- JANELA DE PERSONALIZAÇÃO DO COMBO -->
+    <div
+      class="modal-combo"
+      id="modal-combo"
+      hidden
+    >
+
+      <div class="modal-combo-conteudo" role="dialog" aria-modal="true" aria-labelledby="modal-combo-titulo">
+
+        <button
+          type="button"
+          class="modal-combo-fechar"
+          id="fechar-modal-combo"
+          aria-label="Fechar janela"
+        >
+          &times;
+        </button>
+
+        <h2 id="modal-combo-titulo">Monte seu combo!</h2>
+
+        <p id="modal-nome-produto">
+          Personalize seu pedido
+        </p>
+
+        <div class="modal-combo-campo">
+
+          <label for="modal-batata">
+            Escolha sua batata:
+          </label>
+
+          <select id="modal-batata">
+            <option value="Batata pequena">Batata pequena</option>
+            <option value="Batata média" selected>Batata média</option>
+            <option value="Batata grande">Batata grande</option>
+          </select>
+
+        </div>
+
+
+        <div class="modal-combo-campo">
+
+          <label for="modal-bebida">
+            Escolha sua bebida:
+          </label>
+
+          <select id="modal-bebida">
+            <option value="Coca-Cola" selected>Coca-Cola</option>
+            <option value="Fanta">Fanta</option>
+            <option value="Sprite">Sprite</option>
+            <option value="Água">Água</option>
+          </select>
+
+        </div>
+
+
+        <div class="modal-combo-preco">
+
+          <span>Preço do combo:</span>
+
+          <strong id="modal-preco-combo">
+            R$ 0,00
+          </strong>
+
+        </div>
+
+
+        <div class="modal-combo-botoes">
+
+          <button
+            type="button"
+            id="cancelar-modal-combo"
+            class="botao-cancelar-combo"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            id="confirmar-modal-combo"
+            class="botao-confirmar-combo"
+          >
+            Adicionar ao carrinho
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SOBRE O MEQUI -->
+    <section class="sobre" id="sobre">
+
+      <h2>Sobre o Mequi</h2>
+
+      <p>
+        O McDonald's é uma rede de restaurantes conhecida por seus
+        hambúrgueres, acompanhamentos, sobremesas e bebidas.
+        Nosso projeto busca apresentar esses produtos em um
+        cardápio digital simples e fácil de utilizar.
+      </p>
+
+      <h3>Por que utilizar nosso site?</h3>
+
+      <div class="diferenciais">
+
+        <div class="diferencial-item">
+          <h4>🛒 Praticidade</h4>
+          <p>Escolha seus produtos e organize tudo no carrinho.</p>
+        </div>
+
+        <div class="diferencial-item">
+          <h4>🍔 Personalização</h4>
+          <p>Monte combos de acordo com suas preferências.</p>
+        </div>
+
+        <div class="diferencial-item">
+          <h4>📦 Organização</h4>
+          <p>Acompanhe seus pedidos de maneira simples.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+
+    <div class="rodape-container">
+
+      <div>
+        <h3>Mequi Experience</h3>
+        <p>Seu cardápio favorito em um só lugar!</p>
+      </div>
+
+      <div>
+        <h3>Navegação</h3>
+        <a href="#inicio">Início</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre nós</a>
+      </div>
+
+      <div>
+        <h3>Atendimento</h3>
+        <p>Projeto demonstrativo de Cultura Maker.</p>
+        <p>Pedidos fictícios, sem pagamento real.</p>
+      </div>
+
+    </div>
+
+    <p>Mequi Experience © 2026</p>
+
+    <a href="{{ url_for('login') }}" class="acesso-funcionario">
+      Área dos funcionários
+    </a>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+

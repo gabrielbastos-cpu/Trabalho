@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel dos Funcionários - Mequi Experience</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ========================================
+         CABEÇALHO
+    ======================================== -->
+
+    <header class="cabecalho">
+
+        <div class="logo-container">
+
+            <img
+                src="https://pngimg.com/uploads/mcdonalds/mcdonalds_PNG17.png"
+                class="logo"
+                alt="Logo do Mequi"
+            >
+
+            <h1>Mequi Experience</h1>
+
+        </div>
+
+        <nav class="navegacao">
+            <a href="{{ url_for('inicio') }}">Cardápio</a>
+            <a href="{{ url_for('logout') }}">Sair da conta</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ========================================
+         PAINEL DOS FUNCIONÁRIOS
+    ======================================== -->
+
+    <main class="painel-funcionarios">
+
+        <div class="titulo-pagina">
+            <h2>Painel dos Funcionários</h2>
+            <p>Gerencie os pedidos recebidos pelo Mequi Experience.</p>
+        </div>
+
+
+        {% if pedidos %}
+
+
+        <!-- ========================================
+             RESUMO DOS PEDIDOS
+        ======================================== -->
+
+        <section class="resumo-pedidos">
+
+            <div class="resumo-item">
+                <span>Total de pedidos</span>
+                <strong>{{ pedidos|length }}</strong>
+            </div>
+
+            <div class="resumo-item pendente">
+                <span>Pendentes</span>
+                <strong>
+                    {{ pedidos|selectattr('dados.status', 'equalto', 'Pendente')|list|length }}
+                </strong>
+            </div>
+
+            <div class="resumo-item preparo">
+                <span>Em preparo</span>
+                <strong>
+                    {{ pedidos|selectattr('dados.status', 'equalto', 'Em preparo')|list|length }}
+                </strong>
+            </div>
+
+            <div class="resumo-item concluido">
+                <span>Concluídos</span>
+                <strong>
+                    {{ pedidos|selectattr('dados.status', 'equalto', 'Concluído')|list|length }}
+                </strong>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             FILTROS
+        ======================================== -->
+
+        <div class="filtros-pedidos">
+
+            <button type="button" class="filtro-pedido ativo" data-filtro="todos">
+                Todos
+            </button>
+
+            <button type="button" class="filtro-pedido" data-filtro="Pendente">
+                Pendentes
+            </button>
+
+            <button type="button" class="filtro-pedido" data-filtro="Em preparo">
+                Em preparo
+            </button>
+
+            <button type="button" class="filtro-pedido" data-filtro="Concluído">
+                Concluídos
+            </button>
+
+        </div>
+
+
+        <!-- ========================================
+             LISTA DE PEDIDOS
+        ======================================== -->
+
+        <div class="lista-pedidos">
+
+            {% for pedido in pedidos %}
+
+            <section
+                class="pedido-funcionario status-{{ pedido['dados']['status']|lower|replace(' ', '-') }}"
+                data-status="{{ pedido['dados']['status'] }}"
+            >
+
+                <!-- CABEÇALHO DO PEDIDO -->
+
+                <div class="pedido-cabecalho">
+
+                    <h3>Pedido #{{ pedido['dados']['id'] }}</h3>
+
+                    <span class="status-pedido">
+                        {{ pedido['dados']['status'] }}
+                    </span>
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <p class="data-pedido">
+                    Recebido em: {{ pedido['dados']['data'] }}
+                </p>
+
+
+                <!-- PRODUTOS -->
+
+                <h4>Produtos solicitados</h4>
+
+                <div class="produtos-pedido">
+
+                    {% for item in pedido['itens'] %}
+
+                    <div class="produto-pedido">
+
+                        <div>
+
+                            <strong>{{ item['nome'] }}</strong>
+
+                            <p>
+                                Quantidade: {{ item['quantidade'] }}
+                            </p>
+
+                            {% if item['tipo'] == 'combo' %}
+                                <p>
+                                    <strong>Combo:</strong>
+                                    {{ item['descricao'] }}
+                                </p>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="preco-produto-pedido">
+
+                            <p>
+                                R$ {{ "%.2f"|format(item['preco'] * item['quantidade']) }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <!-- TOTAL -->
+
+                <div class="total-pedido">
+
+                    Total: R$ {{ "%.2f"|format(pedido['dados']['total']) }}
+
+                </div>
+
+
+                <!-- ========================================
+                     ATUALIZAR STATUS
+                ======================================== -->
+
+                <form
+                    class="form-status"
+                    action="{{ url_for('atualizar_status', pedido_id=pedido['dados']['id']) }}"
+                    method="POST"
+                >
+
+                    <label for="status-{{ pedido['dados']['id'] }}">
+                        Atualizar status do pedido:
+                    </label>
+
+                    <select
+                        name="status"
+                        id="status-{{ pedido['dados']['id'] }}"
+                    >
+
+                        <option value="Pendente"
+                            {% if pedido['dados']['status'] == 'Pendente' %}selected{% endif %}>
+                            Pendente
+                        </option>
+
+                        <option value="Em preparo"
+                            {% if pedido['dados']['status'] == 'Em preparo' %}selected{% endif %}>
+                            Em preparo
+                        </option>
+
+                        <option value="Concluído"
+                            {% if pedido['dados']['status'] == 'Concluído' %}selected{% endif %}>
+                            Concluído
+                        </option>
+
+                    </select>
+
+                    <button type="submit">
+                        Salvar status
+                    </button>
+
+                </form>
+
+
+                <!-- ========================================
+                     EXCLUIR PEDIDO
+                ======================================== -->
+
+                <form
+                    class="form-excluir-pedido"
+                    action="{{ url_for('excluir_pedido', pedido_id=pedido['dados']['id']) }}"
+                    method="POST"
+                    onsubmit="return confirm('Tem certeza de que deseja excluir este pedido? Essa ação não poderá ser desfeita.');"
+                >
+
+                    <button
+                        type="submit"
+                        class="botao-excluir-pedido"
+                    >
+                        Excluir pedido
+                    </button>
+
+                </form>
+
+            </section>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- MENSAGEM DOS FILTROS -->
+
+        <p class="nenhum-filtro" id="nenhum-filtro" hidden>
+            Nenhum pedido encontrado nessa categoria.
+        </p>
+
+
+        {% else %}
+
+
+        <!-- ========================================
+             NENHUM PEDIDO
+        ======================================== -->
+
+        <div class="sem-pedidos">
+
+            <h3>Nenhum pedido por enquanto</h3>
+
+            <p>
+                Quando um cliente finalizar um pedido, ele aparecerá aqui.
+            </p>
+
+            <a href="{{ url_for('inicio') }}" class="botao-voltar">
+                Voltar ao cardápio
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </main>
+
+
+    <!-- ========================================
+         JAVASCRIPT DOS FILTROS
+    ======================================== -->
+
+    <script>
+
+        const botoesFiltro = document.querySelectorAll(".filtro-pedido");
+
+        const pedidos = document.querySelectorAll(".pedido-funcionario");
+
+        const mensagemVazia = document.getElementById("nenhum-filtro");
+
+
+        botoesFiltro.forEach(botao => {
+
+            botao.addEventListener("click", () => {
+
+                const filtro = botao.dataset.filtro;
+
+                let encontrados = 0;
+
+
+                // Atualiza botão ativo
+
+                botoesFiltro.forEach(item => {
+                    item.classList.remove("ativo");
+                });
+
+                botao.classList.add("ativo");
+
+
+                // Filtra os pedidos
+
+                pedidos.forEach(pedido => {
+
+                    const status = pedido.dataset.status;
+
+                    const mostrar =
+                        filtro === "todos" || status === filtro;
+
+                    pedido.hidden = !mostrar;
+
+                    if (mostrar) {
+                        encontrados++;
+                    }
+
+                });
+
+
+                // Mostra mensagem quando não houver resultados
+
+                if (mensagemVazia) {
+                    mensagemVazia.hidden = encontrados > 0;
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+

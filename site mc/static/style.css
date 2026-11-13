@@ -1,0 +1,2028 @@
+
+/* ========================================
+   1. CONFIGURAÇÕES GERAIS
+======================================== */
+
+:root {
+    --vermelho: #DA291C;
+    --vermelho-escuro: #B51F16;
+    --amarelo: #FFC72C;
+    --amarelo-claro: #FFF5D6;
+    --preto: #292929;
+    --cinza: #666;
+    --cinza-claro: #F5F5F5;
+    --branco: #FFFFFF;
+    --borda: #EAEAEA;
+    --sombra: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    background-color: var(--branco);
+    color: var(--preto);
+}
+
+img {
+    max-width: 100%;
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ========================================
+   2. CABEÇALHO
+======================================== */
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    min-height: 90px;
+    padding: 12px 5%;
+    background-color: var(--vermelho);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: auto;
+    height: 62px;
+    object-fit: contain;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    color: var(--amarelo);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+
+.navegacao a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 21px;
+    transition: color 0.25s ease;
+}
+
+.navegacao a:hover {
+    color: var(--amarelo);
+}
+
+.botao-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 11px 20px;
+    background-color: var(--amarelo);
+    color: var(--preto) !important;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.25s ease;
+}
+
+.botao-carrinho img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.botao-carrinho:hover {
+    background-color: var(--branco);
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   3. BANNER PRINCIPAL
+======================================== */
+
+.banner-principal {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--vermelho);
+}
+
+.banner-principal img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.banner-botao {
+    position: absolute;
+    left: 7%;
+    bottom: 12%;
+    padding: 13px 28px;
+    background-color: var(--amarelo);
+    color: var(--preto);
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+.banner-botao:hover {
+    background-color: var(--branco);
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   4. PROMOÇÕES
+======================================== */
+
+.promocoes {
+    padding: 65px 25px;
+    text-align: center;
+    background-color: var(--amarelo-claro);
+}
+
+.promocoes h2 {
+    margin: 0 0 12px;
+    color: var(--vermelho);
+    font-size: 42px;
+}
+
+.promocoes > p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 21px;
+}
+
+.promocoes-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 28px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+.promocao-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding-bottom: 22px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease;
+}
+
+.promocao-item:hover {
+    transform: translateY(-7px);
+}
+
+.promocao-item img {
+    width: 100%;
+    height: 210px;
+    padding: 15px;
+    object-fit: contain;
+}
+
+.promocao-item h3 {
+    margin: 12px 10px 5px;
+    font-size: 29px;
+}
+
+.promocao-item p {
+    margin: 8px;
+    color: var(--vermelho);
+    font-size: 25px;
+}
+
+.promocao-item a {
+    display: inline-block;
+    margin-top: auto;
+    padding: 11px 25px;
+    background-color: var(--vermelho);
+    color: var(--branco);
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 19px;
+    transition: background-color 0.25s ease;
+}
+
+.promocao-item a:hover {
+    background-color: var(--vermelho-escuro);
+}
+
+
+/* ========================================
+   5. CUPONS
+======================================== */
+
+.cupons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cupons img {
+    max-width: 100%;
+    max-height: 500px;
+    height: auto;
+    margin-top: 20px;
+    object-fit: contain;
+}
+
+
+/* ========================================
+   6. CARDÁPIO
+======================================== */
+
+#cardapio {
+    padding: 65px 25px;
+    text-align: center;
+    background-color: var(--branco);
+}
+
+#cardapio h2 {
+    margin: 0 0 10px;
+    color: var(--vermelho);
+    font-size: 43px;
+}
+
+#cardapio > p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 21px;
+}
+
+
+/* ========================================
+   7. ABAS E FILTROS DO CARDÁPIO
+======================================== */
+
+input[name="categorias"] {
+    display: none;
+}
+
+.botoes-abas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 35px 0;
+}
+
+.botoes-abas label {
+    padding: 11px 23px;
+    background-color: var(--cinza-claro);
+    color: var(--preto);
+    border: 1px solid var(--borda);
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 21px;
+    transition: 0.25s ease;
+}
+
+.botoes-abas label:hover {
+    background-color: var(--amarelo-claro);
+    border-color: var(--amarelo);
+}
+
+#aba-todos:checked ~ .botoes-abas label[for="aba-todos"],
+#aba-hamburguer:checked ~ .botoes-abas label[for="aba-hamburguer"],
+#aba-sorvete:checked ~ .botoes-abas label[for="aba-sorvete"],
+#aba-acompanhamento:checked ~ .botoes-abas label[for="aba-acompanhamento"] {
+    background-color: var(--amarelo);
+    border-color: var(--amarelo);
+    color: var(--preto);
+    font-weight: 700;
+}
+
+#aba-hamburguer:checked ~ .cardapio-container .cardapio-item:not(.hamburguer),
+#aba-sorvete:checked ~ .cardapio-container .cardapio-item:not(.sorvete),
+#aba-acompanhamento:checked ~ .cardapio-container .cardapio-item:not(.acompanhamento) {
+    display: none;
+}
+
+
+/* ========================================
+   8. CARDS DOS PRODUTOS
+======================================== */
+
+.cardapio-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+.cardapio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 0;
+    padding: 20px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardapio-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.13);
+}
+
+.cardapio-item img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    padding: 10px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.cardapio-item:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ========================================
+   9. DESCRIÇÃO DOS PRODUTOS
+======================================== */
+
+.descricao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 12px 5px;
+    text-align: center;
+}
+
+.descricao h3 {
+    margin: 5px 0 8px;
+    color: var(--preto);
+    font-size: 29px;
+}
+
+.descricao p {
+    margin: 8px 0 15px;
+    color: var(--vermelho);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.botao-adicionar {
+    margin-top: auto;
+    padding: 12px 25px;
+    background-color: var(--amarelo);
+    color: var(--preto);
+    border: none;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.botao-adicionar:hover {
+    background-color: #E5AD16;
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   10. SOBRE O PROJETO
+======================================== */
+
+.sobre {
+    padding: 65px 25px;
+    text-align: center;
+    background-color: var(--cinza-claro);
+}
+
+.sobre h2 {
+    margin: 0 0 18px;
+    color: var(--vermelho);
+    font-size: 42px;
+}
+
+.sobre > p {
+    max-width: 780px;
+    margin: 0 auto;
+    color: var(--cinza);
+    font-size: 21px;
+    line-height: 1.6;
+}
+
+.sobre > h3 {
+    margin-top: 45px;
+    font-size: 29px;
+}
+
+.diferenciais {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 30px auto 0;
+}
+
+.diferencial-item {
+    width: 270px;
+    padding: 28px 20px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 15px;
+    box-shadow: var(--sombra);
+}
+
+.diferencial-item h4 {
+    margin: 0 0 12px;
+    color: var(--vermelho);
+    font-size: 27px;
+}
+
+.diferencial-item p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   11. RODAPÉ
+======================================== */
+
+.rodape {
+    margin: 0;
+    padding: 40px 30px 20px;
+    background-color: var(--preto);
+    color: var(--branco);
+    text-align: center;
+}
+
+.rodape-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 35px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.rodape-container > div {
+    min-width: 180px;
+}
+
+.rodape h3 {
+    margin: 0 0 15px;
+    color: var(--amarelo);
+    font-size: 26px;
+}
+
+.rodape p {
+    color: #ddd;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.rodape a {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.25s ease;
+}
+
+.rodape a:hover {
+    color: var(--amarelo);
+}
+
+.rodape-final {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #555;
+}
+
+.rodape-final p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+.rodape .acesso-funcionario {
+    display: inline-block;
+    margin: 10px 0 0;
+    color: #999;
+    font-size: 13px;
+    opacity: 0.65;
+}
+
+.rodape .acesso-funcionario:hover {
+    color: var(--amarelo);
+    opacity: 1;
+}
+
+
+/* ========================================
+   12. BOTÕES GERAIS
+======================================== */
+
+button {
+    padding: 12px 24px;
+    background-color: var(--vermelho);
+    color: var(--branco);
+    border: none;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    background-color: var(--vermelho-escuro);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+#finalizar-pedido {
+    background-color: var(--vermelho);
+}
+
+#limpar-carrinho {
+    background-color: #555;
+}
+
+#limpar-carrinho:hover {
+    background-color: #333;
+}
+
+
+/* ========================================
+   13. PÁGINA DO CARRINHO
+======================================== */
+
+.pagina-carrinho {
+    width: 100%;
+    max-width: 1050px;
+    margin: 45px auto;
+    padding: 25px;
+}
+
+.pagina-carrinho h2 {
+    color: var(--vermelho);
+    font-size: 42px;
+}
+
+.pagina-carrinho > p {
+    color: var(--cinza);
+    font-size: 21px;
+}
+
+.resumo-carrinho {
+    margin-top: 30px;
+    padding: 28px;
+    background-color: var(--cinza-claro);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+}
+
+.resumo-carrinho h3 {
+    font-size: 29px;
+}
+
+#carrinho-total {
+    color: var(--vermelho);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.resumo-carrinho button {
+    margin: 10px 8px 0 0;
+}
+
+.total-carrinho {
+    font-size: 23px;
+}
+
+.acoes-carrinho {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.item-carrinho {
+    margin: 18px 0;
+    padding: 25px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 15px;
+    box-shadow: var(--sombra);
+}
+
+.item-carrinho h3 {
+    color: var(--vermelho);
+    font-size: 28px;
+}
+
+.item-carrinho p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.item-carrinho hr {
+    margin: 18px 0;
+    border: none;
+    border-top: 1px solid var(--borda);
+}
+
+.item-carrinho button {
+    margin: 5px;
+}
+
+
+/* ========================================
+   14. FORMULÁRIOS
+======================================== */
+
+form label {
+    font-size: 20px;
+}
+
+form select,
+form input {
+    padding: 11px 14px;
+    background-color: var(--branco);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: var(--amarelo);
+    color: var(--preto);
+    border-radius: 25px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #E5AD16;
+}
+
+
+/* ========================================
+   15. LOGIN DOS FUNCIONÁRIOS
+======================================== */
+
+.pagina-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 25px;
+    background-color: var(--cinza-claro);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 38px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+}
+
+.logo-login {
+    display: block;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 15px;
+    object-fit: contain;
+}
+
+.login-container h1 {
+    color: var(--vermelho);
+    text-align: center;
+    font-size: 40px;
+}
+
+.login-container h2 {
+    color: var(--preto);
+    text-align: center;
+    font-size: 26px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.login-container label {
+    font-size: 20px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 19px;
+}
+
+.login-container input:focus {
+    outline: 2px solid var(--amarelo);
+    border-color: var(--amarelo);
+}
+
+.login-container button {
+    margin-top: 12px;
+}
+
+.login-container > a {
+    display: block;
+    margin-top: 20px;
+    color: var(--vermelho);
+    text-align: center;
+    font-size: 19px;
+}
+
+.erro-login {
+    color: var(--vermelho);
+    text-align: center;
+    font-size: 18px;
+}
+
+
+/* ========================================
+   16. PÁGINAS INTERNAS
+======================================== */
+
+.botao-voltar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 23px;
+    background-color: var(--amarelo);
+    color: var(--preto);
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+.botao-voltar:hover {
+    background-color: var(--branco);
+    transform: translateY(-2px);
+}
+
+.titulo-pagina {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.titulo-pagina h2 {
+    margin-bottom: 8px;
+    color: var(--vermelho);
+    font-size: 43px;
+}
+
+.titulo-pagina p {
+    color: var(--cinza);
+    font-size: 21px;
+}
+
+
+/* ========================================
+   17. PAINEL DOS FUNCIONÁRIOS
+======================================== */
+
+.painel-funcionarios {
+    width: 100%;
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 25px;
+}
+
+.lista-pedidos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.pedido-funcionario {
+    padding: 25px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+}
+
+.pedido-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.pedido-cabecalho h3 {
+    margin: 0;
+    color: var(--vermelho);
+    font-size: 30px;
+}
+
+.status-pedido {
+    padding: 7px 13px;
+    background-color: var(--amarelo-claro);
+    color: var(--preto);
+    border-radius: 20px;
+    font-size: 17px;
+}
+
+.data-pedido {
+    color: var(--cinza);
+    font-size: 17px;
+}
+
+.pedido-funcionario h4 {
+    margin: 25px 0 12px;
+    font-size: 23px;
+}
+
+.produtos-pedido {
+    border-top: 1px solid var(--borda);
+}
+
+.produto-pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.produto-pedido strong {
+    font-size: 20px;
+}
+
+.produto-pedido p {
+    margin: 5px 0 0;
+    color: var(--cinza);
+    font-size: 17px;
+}
+
+.preco-produto-pedido p {
+    color: var(--vermelho);
+    font-weight: 700;
+}
+
+.total-pedido {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--amarelo-claro);
+    border-radius: 10px;
+    color: var(--vermelho);
+    text-align: right;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.form-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.form-status select {
+    width: 100%;
+}
+
+.sem-pedidos {
+    padding: 45px 20px;
+    background-color: var(--cinza-claro);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.sem-pedidos h3 {
+    color: var(--vermelho);
+    font-size: 30px;
+}
+
+.sem-pedidos p {
+    color: var(--cinza);
+    font-size: 20px;
+}
+
+
+/* ========================================
+   18. CONFIRMAÇÃO DO PEDIDO
+======================================== */
+
+.pagina-confirmacao {
+    min-height: 75vh;
+    padding: 50px 20px;
+    background-color: var(--cinza-claro);
+}
+
+.cartao-confirmacao {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 35px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+    text-align: center;
+}
+
+.icone-confirmacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 20px;
+    background-color: var(--amarelo);
+    color: var(--preto);
+    border-radius: 50%;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.cartao-confirmacao h2 {
+    margin: 10px 0;
+    color: var(--vermelho);
+    font-size: 38px;
+}
+
+.mensagem-confirmacao {
+    color: var(--cinza);
+    font-size: 20px;
+}
+
+.numero-pedido {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 22px;
+    background-color: var(--amarelo-claro);
+    border-radius: 25px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.cartao-confirmacao h3 {
+    margin-top: 25px;
+    text-align: left;
+    font-size: 27px;
+}
+
+.itens-confirmacao {
+    border-top: 1px solid var(--borda);
+}
+
+.item-confirmacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--borda);
+    text-align: left;
+}
+
+.item-confirmacao strong {
+    font-size: 20px;
+}
+
+.item-confirmacao p {
+    margin: 5px 0 0;
+    color: var(--cinza);
+    font-size: 17px;
+}
+
+.total-confirmacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 18px;
+    background-color: var(--amarelo-claro);
+    border-radius: 12px;
+    font-size: 23px;
+}
+
+.total-confirmacao strong {
+    color: var(--vermelho);
+    font-size: 26px;
+}
+
+.status-confirmacao {
+    margin: 20px 0;
+    color: var(--cinza);
+    font-size: 20px;
+}
+
+.botao-voltar-cardapio {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 30px;
+    background-color: var(--vermelho);
+    color: var(--branco);
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 21px;
+    transition: 0.25s ease;
+}
+
+.botao-voltar-cardapio:hover {
+    background-color: var(--vermelho-escuro);
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   19. ACESSIBILIDADE
+======================================== */
+
+a:focus-visible,
+button:focus-visible,
+label:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   20. RESPONSIVIDADE - TABLETS
+======================================== */
+
+@media (max-width: 900px) {
+    .cabecalho {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 18px;
+    }
+
+    .navegacao {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .cardapio-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ========================================
+   21. RESPONSIVIDADE - CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+    .cabecalho {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 12px;
+    }
+
+    .logo {
+        height: 52px;
+    }
+
+    .cabecalho h1 {
+        font-size: 27px;
+    }
+
+    .navegacao {
+        gap: 13px;
+    }
+
+    .navegacao a {
+        font-size: 18px;
+    }
+
+    .botao-carrinho {
+        font-size: 19px;
+    }
+
+    .banner-botao {
+        left: 5%;
+        bottom: 8%;
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .promocoes,
+    #cardapio,
+    .sobre {
+        padding: 45px 16px;
+    }
+
+    .promocoes h2,
+    #cardapio h2,
+    .sobre h2 {
+        font-size: 33px;
+    }
+
+    .promocoes > p,
+    #cardapio > p,
+    .sobre > p {
+        font-size: 19px;
+    }
+
+    .promocao-item {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .cardapio-container {
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+    }
+
+    .cardapio-item {
+        width: 100%;
+    }
+
+    .cardapio-item img {
+        height: 210px;
+    }
+
+    .botoes-abas {
+        gap: 8px;
+    }
+
+    .botoes-abas label {
+        padding: 9px 15px;
+        font-size: 18px;
+    }
+
+    .diferencial-item {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .rodape {
+        padding: 35px 20px;
+    }
+
+    .rodape-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .rodape-container > div {
+        width: 100%;
+    }
+
+    .pagina-carrinho {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .pagina-carrinho h2 {
+        font-size: 33px;
+    }
+
+    .resumo-carrinho,
+    .item-carrinho {
+        padding: 18px;
+    }
+
+    .login-container {
+        padding: 25px;
+    }
+}
+
+
+/* ========================================
+   22. RESPONSIVIDADE - PÁGINAS INTERNAS
+======================================== */
+
+@media (max-width: 750px) {
+    .lista-pedidos {
+        grid-template-columns: 1fr;
+    }
+
+    .painel-funcionarios {
+        margin: 25px auto;
+        padding: 15px;
+    }
+
+    .cartao-confirmacao {
+        padding: 22px;
+    }
+
+    .cartao-confirmacao h2 {
+        font-size: 31px;
+    }
+
+    .pedido-cabecalho {
+        flex-wrap: wrap;
+    }
+
+    .botao-voltar {
+        font-size: 18px;
+    }
+}
+
+
+/* ========================================
+   RESUMO DOS PEDIDOS
+======================================== */
+
+.resumo-pedidos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 30px 0;
+}
+
+.resumo-item {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.resumo-item span {
+    color: var(--cinza);
+    font-size: 18px;
+}
+
+.resumo-item strong {
+    font-size: 32px;
+    color: var(--preto);
+}
+
+.resumo-item.pendente {
+    background-color: #fff3d6;
+}
+
+.resumo-item.preparo {
+    background-color: #e5f0ff;
+}
+
+.resumo-item.concluido {
+    background-color: #e3f5e8;
+}
+
+/* ========================================
+   FILTROS DOS PEDIDOS
+======================================== */
+
+.filtros-pedidos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.filtro-pedido {
+    padding: 10px 22px;
+    border: 2px solid var(--vermelho);
+    border-radius: 25px;
+    background-color: white;
+    color: var(--vermelho);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.filtro-pedido:hover,
+.filtro-pedido.ativo {
+    background-color: var(--vermelho);
+    color: white;
+}
+
+/* ========================================
+   CORES DOS STATUS
+======================================== */
+
+.pedido-funcionario.status-pendente {
+    border-left: 6px solid #e5a000;
+}
+
+.pedido-funcionario.status-em-preparo {
+    border-left: 6px solid #2878d0;
+}
+
+.pedido-funcionario.status-concluído {
+    border-left: 6px solid #299b50;
+}
+
+.status-pendente .status-pedido {
+    background-color: #fff0c2;
+    color: #8a5b00;
+}
+
+.status-em-preparo .status-pedido {
+    background-color: #dcecff;
+    color: #15569b;
+}
+
+.status-concluído .status-pedido {
+    background-color: #dff3e5;
+    color: #176b34;
+}
+
+/* ========================================
+   MENSAGEM DE FILTRO VAZIO
+======================================== */
+
+.nenhum-filtro {
+    text-align: center;
+    padding: 25px;
+    font-size: 20px;
+    color: var(--cinza);
+}
+
+.pedido-funcionario[hidden] {
+    display: none;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+    .resumo-pedidos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filtros-pedidos {
+        gap: 8px;
+    }
+
+    .filtro-pedido {
+        font-size: 16px;
+        padding: 9px 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .resumo-pedidos {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   23. AJUSTES EXTRAS PARA TELAS MENORES
+======================================== */
+
+/* Evita rolagem horizontal indesejada */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Imagens sempre respeitam o espaço disponível */
+img {
+    max-width: 100%;
+}
+
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (max-width: 900px) {
+
+    .cabecalho {
+        width: 100%;
+        padding: 18px 20px;
+    }
+
+    .navegacao {
+        justify-content: center;
+    }
+
+    .promocoes-container {
+        gap: 20px;
+    }
+
+    .cardapio-container {
+        gap: 20px;
+    }
+
+    .pagina-carrinho {
+        padding: 20px;
+    }
+
+}
+
+/* ========================================
+   CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+
+    /* Cabeçalho */
+    .cabecalho {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 18px 12px;
+    }
+
+    .logo-container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cabecalho h1 {
+        font-size: 25px;
+    }
+
+    .navegacao {
+        width: 100%;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .navegacao a {
+        font-size: 17px;
+    }
+
+    /* Banner */
+    .banner-principal img {
+        width: 100%;
+        height: auto;
+    }
+
+    .banner-botao {
+        font-size: 14px;
+        padding: 7px 13px;
+    }
+
+    /* Cards */
+    .cardapio-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cardapio-item {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .cardapio-item img {
+        height: 190px;
+    }
+
+    /* Promoções */
+    .promocao-item {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    /* Filtros */
+    .botoes-abas {
+        gap: 8px;
+    }
+
+    .botoes-abas label {
+        font-size: 17px;
+        padding: 9px 13px;
+    }
+
+    /* Carrinho */
+    .pagina-carrinho {
+        padding: 12px;
+    }
+
+    .item-carrinho {
+        padding: 15px;
+    }
+
+    .acoes-carrinho {
+        flex-direction: column;
+    }
+
+    .acoes-carrinho button {
+        width: 100%;
+    }
+
+    /* Painel de funcionários */
+    .painel-funcionarios {
+        padding: 12px;
+    }
+
+    .lista-pedidos {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo-pedidos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .resumo-item {
+        padding: 14px 8px;
+    }
+
+    .resumo-item span {
+        font-size: 16px;
+    }
+
+    .resumo-item strong {
+        font-size: 27px;
+    }
+
+    .filtros-pedidos {
+        gap: 8px;
+    }
+
+    .filtro-pedido {
+        padding: 9px 13px;
+        font-size: 16px;
+    }
+
+    /* Confirmação */
+    .cartao-confirmacao {
+        padding: 18px;
+    }
+
+    .total-confirmacao {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* Login */
+    .login-container {
+        padding: 22px;
+    }
+
+    /* Rodapé */
+    .rodape-container {
+        align-items: center;
+    }
+
+}
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 380px) {
+
+    .cabecalho h1 {
+        font-size: 22px;
+    }
+
+    .logo {
+        height: 45px;
+    }
+
+    .navegacao {
+        gap: 9px;
+    }
+
+    .navegacao a {
+        font-size: 15px;
+    }
+
+    .promocoes h2,
+    #cardapio h2,
+    .sobre h2 {
+        font-size: 29px;
+    }
+
+    .descricao h3 {
+        font-size: 25px;
+    }
+
+    .botao-adicionar {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .resumo-pedidos {
+        grid-template-columns: 1fr;
+    }
+
+    .pedido-funcionario {
+        padding: 16px;
+    }
+
+    .produto-pedido {
+        flex-wrap: wrap;
+    }
+
+    .item-confirmacao {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* ========================================
+   CONTROLES DO CARRINHO
+======================================== */
+
+.controles-carrinho {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.controles-carrinho button {
+    min-width: 42px;
+    padding: 9px 15px;
+}
+
+.controles-carrinho .botao-remover {
+    background-color: #555;
+}
+
+.controles-carrinho .botao-remover:hover {
+    background-color: #333;
+}
+
+.quantidade-produto {
+    font-weight: 700;
+}
+
+.subtotal-produto {
+    color: var(--vermelho);
+    font-weight: 700;
+}
+
+#finalizar-pedido:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .controles-carrinho {
+        gap: 8px;
+    }
+
+    .controles-carrinho button {
+        flex: 1;
+    }
+}
+
+
+/* ========================================
+   24. JANELA DE PERSONALIZAÇÃO DO COMBO
+======================================== */
+
+.modal-combo {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+}
+
+.modal-combo[hidden] {
+    display: none !important;
+}
+
+.modal-combo-conteudo {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    padding: 35px;
+    background-color: var(--branco);
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+    animation: aparecer-modal 0.25s ease;
+}
+
+@keyframes aparecer-modal {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-combo-conteudo h2 {
+    margin: 5px 0 10px;
+    color: var(--vermelho);
+    text-align: center;
+    font-size: 36px;
+}
+
+.modal-combo-conteudo > p {
+    margin-bottom: 25px;
+    color: var(--cinza);
+    text-align: center;
+    font-size: 20px;
+}
+
+.modal-combo-fechar {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    background-color: transparent;
+    color: var(--cinza);
+    font-size: 30px;
+    line-height: 1;
+}
+
+.modal-combo-fechar:hover {
+    background-color: var(--cinza-claro);
+    color: var(--vermelho);
+    box-shadow: none;
+    transform: none;
+}
+
+.modal-combo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin: 18px 0;
+}
+
+.modal-combo-campo label {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.modal-combo-campo select {
+    width: 100%;
+    padding: 13px;
+    background-color: var(--cinza-claro);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 19px;
+}
+
+.modal-combo-campo select:focus {
+    outline: 2px solid var(--amarelo);
+    border-color: var(--amarelo);
+}
+
+.modal-combo-preco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 25px;
+    padding: 17px;
+    background-color: var(--amarelo-claro);
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.modal-combo-preco strong {
+    color: var(--vermelho);
+    font-size: 25px;
+}
+
+.modal-combo-botoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.modal-combo-botoes button {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 18px;
+}
+
+.botao-cancelar-combo {
+    background-color: #666;
+}
+
+.botao-cancelar-combo:hover {
+    background-color: #444;
+}
+
+.botao-confirmar-combo {
+    background-color: var(--amarelo);
+    color: var(--preto);
+}
+
+.botao-confirmar-combo:hover {
+    background-color: #E5AD16;
+}
+
+@media (max-width: 480px) {
+    .modal-combo-conteudo {
+        padding: 28px 20px;
+    }
+
+    .modal-combo-conteudo h2 {
+        font-size: 30px;
+    }
+
+    .modal-combo-botoes {
+        flex-direction: column;
+    }
+
+    .modal-combo-preco {
+        flex-wrap: wrap;
+    }
+}
+
+/* ========================================
+   25. SELETOR DE COMBO NOS PRODUTOS
+======================================== */
+
+.opcoes-pedido {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    width: 100%;
+    max-width: 260px;
+    margin: 12px auto 18px;
+    padding: 14px 16px;
+    background: #FFF9E9;
+    border: 1px solid #F2E2B5;
+    border-radius: 13px;
+    text-align: left;
+}
+
+.opcoes-pedido label {
+    color: var(--preto);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.tipo-pedido {
+    width: 100%;
+    padding: 11px 38px 11px 13px;
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-color: var(--branco);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23DA291C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+
+    color: var(--preto);
+    border: 1px solid #E5DCC7;
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tipo-pedido:hover {
+    border-color: var(--amarelo);
+}
+
+.tipo-pedido:focus {
+    outline: none;
+    border-color: var(--vermelho);
+    box-shadow: 0 0 0 3px rgba(218, 41, 28, 0.12);
+}
+
+.tipo-pedido option {
+    background-color: var(--branco);
+    color: var(--preto);
+    font-size: 17px;
+}
+
+@media (max-width: 600px) {
+    .opcoes-pedido {
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   26. ALINHAMENTO DA LOGO
+======================================== */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.logo {
+    display: block;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* ========================================
+   27. EXCLUIR PEDIDOS
+======================================== */
+
+.form-excluir-pedido {
+    margin-top: 12px;
+}
+
+.botao-excluir-pedido {
+    width: 100%;
+    padding: 12px;
+    background-color: #B51F16;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.botao-excluir-pedido:hover {
+    background-color: #8F1710;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   FIM DO CSS
+======================================== */

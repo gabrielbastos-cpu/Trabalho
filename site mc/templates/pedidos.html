@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pedido confirmado - Mequi Experience</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <img
+                src="https://pngimg.com/uploads/mcdonalds/mcdonalds_PNG17.png"
+                class="logo"
+                alt="Logo do Mequi"
+            >
+            <h1>Mequi Experience</h1>
+        </div>
+
+        <a href="{{ url_for('inicio') }}" class="botao-voltar">
+            Voltar ao cardápio
+        </a>
+    </header>
+
+    <main class="pagina-confirmacao">
+
+        <section class="cartao-confirmacao">
+
+            <div class="icone-confirmacao">✓</div>
+
+            <h2>Pedido realizado com sucesso!</h2>
+
+            <p class="mensagem-confirmacao">
+                Obrigado por escolher o Mequi Experience!
+            </p>
+
+            <div class="numero-pedido">
+                Pedido #{{ pedido['id'] }}
+            </div>
+
+            <h3>Resumo do pedido</h3>
+
+            <div class="itens-confirmacao">
+
+                {% for item in itens %}
+
+                    <div class="item-confirmacao">
+
+                        <div>
+                            <strong>{{ item['nome'] }}</strong>
+                            <p>Quantidade: {{ item['quantidade'] }}</p>
+                        </div>
+
+                        <strong>
+                            R$ {{ "%.2f"|format(item['preco'] * item['quantidade']) }}
+                        </strong>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="total-confirmacao">
+                <span>Total do pedido</span>
+
+                <strong>
+                    R$ {{ "%.2f"|format(pedido['total']) }}
+                </strong>
+            </div>
+
+            <div class="status-confirmacao">
+                Status: {{ pedido['status'] }}
+            </div>
+
+            <a href="{{ url_for('inicio') }}" class="botao-voltar-cardapio">
+                Voltar ao cardápio
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Mequi Experience</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="pagina-login">
+
+        <div class="login-container">
+
+            <img
+                src="https://pngimg.com/uploads/mcdonalds/mcdonalds_PNG17.png"
+                class="logo-login"
+                alt="Logo do Mequi"
+            >
+
+            <h1>Mequi Experience</h1>
+            <h2>Área dos funcionários</h2>
+
+            {% if erro %}
+                <p class="erro-login">{{ erro }}</p>
+            {% endif %}
+
+            <form action="{{ url_for('login') }}" method="POST">
+
+                <label for="usuario">Usuário</label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Digite seu usuário"
+                    required
+                >
+
+                <label for="senha">Senha</label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+                <button type="submit">Entrar</button>
+
+            </form>
+
+            <a href="{{ url_for('inicio') }}">Voltar ao cardápio</a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
